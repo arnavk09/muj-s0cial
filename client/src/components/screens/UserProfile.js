@@ -48,7 +48,7 @@ const Profile = () => {
                         }
                     }
                 })
-
+                setShowFollow(false)
                 console.log(data)
             })
     }
@@ -68,15 +68,16 @@ const Profile = () => {
                 dispatch({ type: "UPDATE", payload: { following: data.following, followers: data.followers } })
                 localStorage.setItem("user", JSON.stringify(data))
                 setProfile((prevState) => {
+const newFollower = prevState.user.followers.filter(item=>item!=data._id)
                     return {
                         ...prevState,
                         user: {
                             ...prevState.user,
-                            followers: [...prevState.user.followers, data._id]
+                            followers: newFollower
                         }
                     }
                 })
-                       setShowFollow(false)
+                       
                 console.log(data)
             })
     }
