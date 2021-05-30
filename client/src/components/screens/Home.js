@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../../App'
 import { Link } from 'react-router-dom'
+import M from 'materialize-css'
 const Home = () => {
     const [data, setData] = useState([])
     const { state, dispatch } = useContext(UserContext)
@@ -31,6 +32,7 @@ const Home = () => {
                 console.log(result)
                 const newData = data.map(item => {
                     if (item._id == result._id) {
+                        M.toast({ html: "You Liked This", classes: "#43a047 green darken-1" })
                         return result
                     } else {
                         return item
@@ -56,7 +58,9 @@ const Home = () => {
                 console.log(result)
                 const newData = data.map(item => {
                     if (item._id == result._id) {
+                        M.toast({ html: "You Disliked This", classes: "#e53935 red darken-1" })
                         return result
+                        
                     } else {
                         return item
                     }
@@ -101,6 +105,7 @@ const Home = () => {
         }).then(res => res.json())
             .then(result => {
                 console.log(result)
+                M.toast({ html: "Deleted", classes: "#e53935 red darken-1" })
                 const newData = data.filter(item => {
                     return item._id !== result._id
                 })
@@ -118,14 +123,15 @@ const Home = () => {
                                     float: "right"
                                 }}
                                     onClick={() => deletePost(item._id)}
-                                >delete</i>
+                                                                       
+                                    >delete</i>
 
                             }</h5>
                             <div className="card-image">
                                 <img src={item.photo} />
                             </div>
                             <div className="card-content">
-                                <i className="material-icons" style={{ color: "red" }}>favorite</i>
+                                
                                 {item.likes.includes(state._id)
                                     ?
                                     <i className="material-icons"
