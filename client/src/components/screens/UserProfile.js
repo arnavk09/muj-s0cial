@@ -1,5 +1,3 @@
-//start at video 37
-
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../../App'
 import { useParams } from 'react-router-dom'
@@ -8,6 +6,7 @@ const Profile = () => {
     const [showFollow, setShowFollow] = useState(true)
     const { state, dispatch } = useContext(UserContext)
     const { userid } = useParams()
+    const [showfollow] = useState(state ? !state.following.includes(userid) : true)
     // console.log(userid)
     useEffect(() => {
         fetch(`/user/${userid}`, {
@@ -79,6 +78,7 @@ const newFollower = prevState.user.followers.filter(item=>item!=data._id)
                 })
                        
                 console.log(data)
+                setShowFollow(true)
             })
     }
     return (
@@ -93,7 +93,7 @@ const newFollower = prevState.user.followers.filter(item=>item!=data._id)
 
                     }}>
                         <div><img style={{ width: "160px", height: "160px", borderRadius: "80px" }}
-                            src="https://tcap.pbworks.com/f/1435170280/myAvatar.png"
+                            src={userProfile.user.pic}
                             alt="profile picture"
                             title="profile picture"
                         /></div>

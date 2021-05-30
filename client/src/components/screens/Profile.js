@@ -24,7 +24,7 @@ fetch('/mypost',{
 
             }}>
                 <div><img style={{ width: "160px", height: "160px", borderRadius: "80px" }}
-                    src="https://tcap.pbworks.com/f/1435170280/myAvatar.png"
+                    src={state?state.pic:"Loading..."}
                     alt="profile picture"
                     title="profile picture"
                 /></div>

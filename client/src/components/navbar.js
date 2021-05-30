@@ -4,13 +4,14 @@ import { UserContext } from '../App'
 import M from 'materialize-css'
 const NavBar = () => {
     const { state, dispatch } = useContext(UserContext)
-    //console.log(" "+state);
+    console.log(" "+state);
     const history = useHistory()
     const renderList = () => {
         if (state) {
             return [
                 <li key = "1"><Link to="/profile">Profile</Link></li>,
                 <li key = "2"><Link to="/create">Create Post</Link></li>,
+                <li key="3"><Link to="/myfollowingpost">Posts from Following</Link></li>,
                 <li> <button className="btn waves-effect waves-light #d32f2f red darken-2"
                     onClick={() => {
                         localStorage.clear()
