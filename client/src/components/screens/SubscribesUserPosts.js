@@ -31,7 +31,7 @@ const Home = () => {
             .then(result => {
                 console.log(result)
                 const newData = data.map(item => {
-                    if (item._id == result._id) {
+                    if (item._id === result._id) {
                         M.toast({ html: "You Liked This", classes: "#43a047 green darken-1" })
                         return result
                     } else {
@@ -57,7 +57,7 @@ const Home = () => {
             .then(result => {
                 console.log(result)
                 const newData = data.map(item => {
-                    if (item._id == result._id) {
+                    if (item._id === result._id) {
                         M.toast({ html: "You Disliked This", classes: "#e53935 red darken-1" })
                         return result
 
@@ -85,7 +85,7 @@ const Home = () => {
             .then(result => {
                 console.log(result)
                 const newData = data.map(item => {
-                    if (item._id == result._id) {
+                    if (item._id === result._id) {
                         return result
                     } else {
                         return item
